@@ -19,16 +19,18 @@ const problems = {
     insertDeleteGetRandom: "Insert Delete Get Random - Medium"
 };
 
-const problemsObjectKeys = Object.keys(problems); // All keys put into an array
+const problemsObjectKeys = Object.keys(problems); // Convert into an array of keys
 
 const problemPicker = () => {
     let randomIndex = Math.floor(Math.random() * problemsObjectKeys.length);
     let randomKey = problemsObjectKeys[randomIndex]; // Select a random key within range 
-    let randomValue = problems[randomKey]; // Random value is selected
+    let randomValue = problems[randomKey]; // Random value is selected from random key
 
     return randomValue;
 };
 
 
-
+console.log(problemsObjectKeys)
+console.log(" ")
+console.log("-----------------------")
 console.log(problemPicker(problems));
