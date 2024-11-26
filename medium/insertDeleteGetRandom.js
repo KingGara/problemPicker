@@ -21,11 +21,11 @@ average O(1) time complexity.
 
 
 Note that I cannot use the dataStructure set here. The reason being is that
-the requirement for this problem is to have each function in my class operate ]
+the requirement for this problem is to have each function in my class operate
 in constant O(1) time. To achieve this within the remove function I need to have
-a way to store the index that the value to be removed is at in my list array.
+a way to store the index that the value(key) to be removed is at in my list array.
 The issue with sets in that I can only store a single value and not key value
-pair reprenting the value and the index that value is stored at. 
+pair representing the value and the index that value is stored at. 
 */
 
 
@@ -37,27 +37,27 @@ class RandomizedSet {
         this.map = new Map();
     }
 
-    search(val) {
-        if(this.map.has(val)) return true
+    search(key) {
+        if(this.map.has(key)) return true
     }
 
-    insert(val) {
-        if(this.search(val)) return false
+    insert(key) {
+        if(this.search(key)) return false
 
-        this.list.push(val);
-        this.map.set(val);
+        this.list.push(key);
+        this.map.set(key, this.list.length - 1);
         return true
     }
 
-    remove(val) {
-        if(!this.search(val)) return false
+    remove(key) {
+        if(!this.search(key)) return false
 
-        let indexOfVal = this.map.get(val);
+        let indexOfVal = this.map.get(key);
         let lastElement = this.list[this.list.length - 1];
 
         this.list[indexOfVal] = lastElement; // val replace with lastElement
         this.list.pop();
-        this.map.delete(val);
+        this.map.delete(key);
         return true
     }
 
